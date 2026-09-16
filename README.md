@@ -1,4 +1,4 @@
-# Constellation 2.0
+# Constellation — Observatory
 
 Constellation is a local-first spatial knowledge garden for capturing thoughts and connecting them into a durable visual graph.
 
@@ -49,4 +49,19 @@ See `DEPLOY.md` for details.
 
 ## Version
 
-Constellation 2.0.0 — final 2.0 release, 16 September 2026.
+Constellation 2.1.0-rc.1 — Observatory visual redesign candidate.
+
+See [design rationale](docs/DESIGN.md), [release notes](RELEASE_NOTES.md), and [verification evidence](QA.md).
+
+## Development verification
+
+Node.js 22+ is used for development checks only:
+
+```sh
+npm ci
+npx playwright install chromium
+npm run test:contracts
+npm test
+```
+
+The suite starts its own local server and creates disposable browser data. Screenshots and results are written to `test-results/`. Set `PLAYWRIGHT_CHROMIUM_EXECUTABLE` to use an existing Chromium binary.

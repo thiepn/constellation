@@ -1,0 +1,14 @@
+{
+  "name": "constellation-observatory",
+  "version": "2.1.0-rc.1",
+  "private": true,
+  "description": "Release verification for the standalone Constellation app; no runtime dependencies.",
+  "scripts": {
+    "test": "node tests/release.cjs",
+    "test:contracts": "node tests/contracts.cjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "playwright": "1.63.0"
+  }
+}

@@ -1,0 +1,5 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const root=path.resolve(__dirname,'..'),html=fs.readFileSync(path.join(root,'index.html'),'utf8'),contracts=JSON.parse(fs.readFileSync(path.join(__dirname,'contracts.json'),'utf8'));
+function extract(s,name){const re=new RegExp('^      (?:async )?function '+name+'\\(', 'm'),m=re.exec(s);assert.ok(m,'Missing '+name);let end=s.slice(m.index+1).search(/^      (?:async )?function /m);return s.slice(m.index,end<0?s.length:m.index+1+end)}
+for(const [name,hash] of Object.entries(contracts.functions)){const actual=crypto.createHash('sha256').update(extract(html,name)).digest('hex');assert.equal(actual,hash,name+' behavioral contract changed');}
+assert.match(html,/const DB_VERSION = 2;/);assert.match(html,/const DB_NAME = 'constellation';/);console.log('PASS',Object.keys(contracts.functions).length,'unchanged data, recovery, import, security, graph-geometry and physics contracts.');

@@ -1,4 +1,4 @@
-# Deploy Constellation 2.0
+# Deploy Constellation 2.1 RC
 
 ## GitHub Pages / static hosting
 
@@ -17,7 +17,7 @@ GitHub Pages works because the application is entirely static. Keep the five run
 
 ## Updating an existing installation
 
-Replace the runtime files with the new release. The Phase 20 service worker uses cache `constellation-2.0.0-v1` and removes older `constellation-*` caches on activation. Existing IndexedDB user data is not part of the service-worker cache and is not deleted by an application update.
+Replace the runtime files with the new release. The release-candidate service worker uses cache `constellation-2.1.0-rc1-observatory` and removes older `constellation-*` caches on activation. Existing IndexedDB user data is not part of the service-worker cache and is not deleted by an application update.
 
 ## Standalone HTML
 

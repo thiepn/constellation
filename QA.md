@@ -1,49 +1,51 @@
-# Constellation 2.0 — Release QA
+# Observatory 2.1.0-rc.1 — release evidence
 
-## Certified in this build environment
+This file replaces the inherited 2.0 certification claims. The original repository did not contain an executable release suite, so this branch adds one. Results below refer to this branch's local Chromium run; prior release claims are not treated as new evidence.
 
-- JavaScript syntax: pass
-- Manifest JSON: pass
-- Service Worker syntax: pass
-- Duplicate actual DOM IDs: 0
-- Unresolved `getElementById` bindings: 0
-- Visible interactive controls without accessible names: 0
-- Chromium desktop smoke: pass
-- Chromium mobile smoke: pass
-- Legacy v1 migration: pass
-- Malformed-data normalization: pass
-- Quota/storage failure handling: pass
-- XSS / unsafe URL regression: pass
-- Oversized import rejection: pass
-- Trash restore: pass
-- Cross-phase import/layout/search/intelligence: pass
-- 1,000 / 5,000 / 10,000 node stress tests: pass
-- Offline service-worker fallback: pass
+## Reproduce
 
-## Performance harness results
+```sh
+npm ci
+npx playwright install chromium
+npm run test:contracts
+npm test
+```
 
-Recovery-storage stress harness, frozen physics, battery performance profile:
+Node 22+; the suite owns its localhost server and disposable browser contexts. `PLAYWRIGHT_CHROMIUM_EXECUTABLE` optionally selects an installed binary. No test hook is embedded in production HTML. `test-results/results.json` records checks, screenshots, axe findings, overflow and graph measurements. GitHub Actions uploads that directory even on failure.
 
-- 1,000 nodes / 999 edges: ~0.83 s boot, ~0.27 s search
-- 5,000 / 4,999: ~1.43 s boot, ~0.24 s search
-- 10,000 / 9,999: ~2.63 s boot, ~0.24 s search, ~24 FPS measured
+## Recorded CI evidence
 
-5,000-node full layout transforms in the same harness:
+[GitHub Actions run 35154861083](https://github.com/thiepn/constellation/actions/runs/35154861083) passed 41 browser checks and 19 source contracts, generating 118 screenshots with zero violations in the seven axe samples. The final landscape spacing follow-up also passed a dedicated six-viewport overlap check locally; the PR runs the full suite again on that follow-up.
 
-- radial: ~1.12 s
-- dependency: ~1.78 s
-- tree: ~1.89 s
+## Functional scope
 
-Performance varies by device/browser and the test intentionally used the fallback storage path rather than normal IndexedDB.
+- HTML script, service worker and manifest parse checks; duplicate main-document IDs.
+- Legacy localStorage v1 migration to IndexedDB v2 and idempotence on reload.
+- Canonical v2 records, exact node/edge payload preservation on reload.
+- Quick capture, undo/redo, keyboard multi-selection, shortest-path presentation, command execution during the debounce window, F6 focus navigation and Escape dismissal.
+- All primary tool panels and their tabs; inspector sections; twelve alternative/research/study views; presentation; high contrast and large controls.
+- Actual backup download, malformed-import rejection, text import, delete/trash restore, and exact node/edge backup round trip through the import preview UI.
+- Actual controlling service worker, offline navigation and persistent IndexedDB contents. Chromium/Firefox use browser offline emulation. WebKit uses a stopped origin server with verified connection refusal because its emulator reported an internal reload error. Neither method mocks the offline response.
+- Graph loads of 100, 500, 1,000, 2,000, 5,000 and 10,000 nodes using frozen physics and battery mode. Fit and visible-node counts are recorded; the existing minimum zoom means the largest fixtures are partly culled.
 
-## Known certification limitation
+## Source contracts
 
-Only Chromium is installed in the execution environment. Firefox and Safari/WebKit should receive manual browser/device acceptance testing when available; this release does not fabricate those results.
+`tests/contracts.json` pins SHA-256 hashes from original commit `94ba544c6a86e7cba7246c6fa298c257873f309c` for nineteen normalization, load/restore, snapshot, encryption, trash, import validation, graph geometry, world transform and physics functions. All nineteen remain unchanged. These contracts detect unintentional source edits; they do not substitute for end-to-end testing of every option.
 
-## RC3 final artifact certification
+## Visual and accessibility scope
 
-- Final standalone HTML SHA-256: `86a17885b93f18d31bbbd6519d59234d4768252422a0d71ce1b6c7344d38985b`
-- Actual main-document DOM IDs: 672, all unique
-- `getElementById` references flagged outside the main DOM (`q`, `s`, `side`, `gate`, `pw`, `go`, `err`, `content`) belong to generated standalone/published HTML documents and are valid inside those generated documents.
-- Final PWA offline mock: navigation returned cached HTML with status 200; older `constellation-*` caches were removed; `constellation-2.0.0-v1` remained active.
-- Standalone HTML and packaged `index.html`: byte-identical.
+Desktop 1440×1000; phone 360×800, 390×844 and 430×932; short landscape 844×390; tablet 820×1180 and 1180×820. Screenshots cover both palettes, dense and empty canvases, inspector and Notes, all major panels, specialized views, commands, import error/preview and trash restoration. Representative screenshots are in `docs/visual/`; the full set is generated by the suite.
+
+Seven axe WCAG A/AA samples: empty desktop, inspector, planner, Knowledge, Safety, light planner and phone inspector. The suite fails on any violation in those samples, uncaught page error, or detected horizontal control overflow. These scans are not a full screen-reader or WCAG conformance certification. Visual review additionally checks hierarchy, panel collisions, clipped tabs, crowded toolbars and label collisions.
+
+## Acceptance boundaries
+
+This is a **release candidate**. Do not merge it solely on the basis of the automated Chromium result.
+
+- Physical iOS/Android software keyboards, safe areas, touch gestures and installed standalone PWA acceptance still require device testing. Viewport automation is not a physical-device test.
+- Chromium and Firefox completed the full CI suite. WebKit completed UI, migration and backup checks, but its automation offline switch reported an internal navigation error. The suite now tests WebKit recovery by stopping the origin server and verifying connection refusal; consult the latest CI result for that check. Physical Safari and screen-reader acceptance remain outstanding.
+- Configured sync, remote AI, publishing, collaboration, plugins, hardware VR and external service flows were not activated. Their controls were reviewed; source contracts cover only the named functions.
+- Quota exhaustion, encrypted backup round trips and every malformed legacy shape were not newly certified; the associated unchanged logic is protected where listed.
+- Large-graph timing is a synthetic, headless software-rendering observation, not a device performance guarantee or a comparison against the inherited 2.0 benchmark.
+
+Keep these acceptance items visible in the PR. No production deployment or merge is performed by the verification suite.

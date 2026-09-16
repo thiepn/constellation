@@ -1,38 +1,25 @@
-# Constellation 2.0.0 Release Notes
+# Constellation 2.1.0-rc.1 — Observatory
 
-Release date: 16 September 2026
+Visual redesign candidate, 16 September 2026.
 
-Constellation 2.0 is the completed 20-phase rebuild of the original floating-thought prototype into a local-first spatial knowledge system.
+## Experience
 
-## Release highlights
+A new editorial identity pairs a warm ink canvas with brass, sage and terracotta graph marks, Instrument Sans controls and Newsreader titles. Atlas Light provides an independently designed daylight palette. Fonts are embedded for standalone and offline use.
 
-- Versioned IndexedDB architecture, migration, recovery and rolling backups
-- Infinite world-coordinate canvas and large-graph rendering optimizations
-- Multi-selection, bulk editing and transaction-based undo/redo
-- Universal rich node system with notes, metadata, media and custom fields
-- Persistent typed graph relationships, backlinks and graph analysis
-- Groups, tags, workspaces and reusable templates
-- Universal search, filtering, saved views and command palette
-- Multiple layouts and alternative graph views
-- Planning, research, study, decisions and idea genealogy
-- Broad import/export and web-capture interoperability
-- Privacy, app lock, encrypted backups and installable offline PWA
-- Full visual identity/theme engine and adaptive accessible interface
-- Review, resurfacing, history playback and analytics
-- Local semantic intelligence with explicitly optional external AI
-- Optional sync, collaboration, publishing and declarative plugins
-- Optional Creative Studio and isolated Labs experiments
-- Phase 19 performance/data-safety/accessibility hardening
+Desktop gains a labeled navigation rail and consistent sidecars. Tablet uses a compact rail. Mobile gains a simplified header, five-action bottom navigation, full-width sheets and a dedicated Notes focus editor. Search puts results before advanced filters; the inspector progressively reveals scheduling detail. Planning, research, study, intelligence, organization, transfer and safety use shared typography and rules instead of nested glass containers.
 
-## Phase 20 release fixes
+Graph marks and links are quieter, with screen-size labels and collision thinning. Selected thoughts and paths retain priority. World coordinates, physics, geometry and semantic data remain intact.
 
-- Promoted internal application version to `2.0.0`
-- Added release metadata and in-app About surface
-- Corrected stale deployment documentation from the Phase 19 package
-- Finalized PWA cache naming and explicit `index.html` shell caching
-- Re-ran migration, failure, accessibility, cross-phase and 1k/5k/10k stress suites
-- Added GitHub/static-host deployment documentation and release checksums
+## Fixes
 
-## Compatibility certification
+- Command Enter uses the current query even while results were being debounced.
+- Knowledge and Intelligence honor Escape consistently.
+- Desktop inspector has a visible close action.
+- Phone header no longer crowds duplicate tool actions; inspector tabs remain reachable.
+- Custom-field type and planning selects receive explicit accessible names.
 
-Automated runtime certification in the build environment was completed with Chromium. Firefox and Safari/WebKit runtimes were not installed in the execution environment, so the release does not claim automated engine-specific certification for those browsers. The application uses standards-based browser APIs with capability checks/fallbacks where needed.
+## Compatibility
+
+IndexedDB stays at version 2 with no new migration. User theme identifiers, customization, graph types, import/export formats, encrypted backup logic and optional integrations remain supported. The PWA cache is versioned for the new shell; database contents remain separate from cache updates.
+
+No runtime packages are added. Development-only Playwright and axe provide repeatable release evidence. See `QA.md` for exact tested coverage and acceptance limitations. This candidate is not a claim of physical-device, screen-reader or configured external-integration certification. Automated Chromium, Firefox and WebKit acceptance runs in CI; see the PR for the latest results and the WebKit offline-test method.
