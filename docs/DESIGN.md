@@ -71,3 +71,7 @@ Screenshots use deterministic local test data. They show real application contro
 ![Tablet](visual/responsive-820x1180.png)
 
 ![Dense synthetic graph](visual/dense-graph.png)
+
+![Short landscape](visual/responsive-844x390.png)
+
+![Tablet inspector](visual/tablet-inspector.png)

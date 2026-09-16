@@ -13,6 +13,10 @@ npm test
 
 Node 22+; the suite owns its localhost server and disposable browser contexts. `PLAYWRIGHT_CHROMIUM_EXECUTABLE` optionally selects an installed binary. No test hook is embedded in production HTML. `test-results/results.json` records checks, screenshots, axe findings, overflow and graph measurements. GitHub Actions uploads that directory even on failure.
 
+## Recorded CI evidence
+
+[GitHub Actions run 35154861083](https://github.com/thiepn/constellation/actions/runs/35154861083) passed 41 browser checks and 19 source contracts, generating 118 screenshots with zero violations in the seven axe samples. The final landscape spacing follow-up also passed a dedicated six-viewport overlap check locally; the PR runs the full suite again on that follow-up.
+
 ## Functional scope
 
 - HTML script, service worker and manifest parse checks; duplicate main-document IDs.
