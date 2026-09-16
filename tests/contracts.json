@@ -1,0 +1,24 @@
+{
+  "baseline": "94ba544c6a86e7cba7246c6fa298c257873f309c",
+  "functions": {
+    "normalizeNode": "b98324444a89687bf175a7d12145b051dcc6f19b428ec0e36eb88bd3a40b08d6",
+    "hydrateRuntimeNode": "68647b9552137c8a9e1e7deaaad41f80ec040c6f16b656732c2cd0dc4e7393f5",
+    "stripRuntimeNode": "705766eeaa7122ba0e261a80bf7375d052f31d18b20568e3adba73835618ce03",
+    "normalizeEdge": "578991959ff79cf23c322bce80750030bc4f5467b6b6e470f71fc1612b508019",
+    "createStores": "72a748360494023171fda2f63e8ecdcc863ee1268b69e4bc3855bce9d1adac88",
+    "loadWorkingState": "13f5a6ad299c1a9b919288e696c8bb21a45b47653b645dc40a23bcc87b7c00a2",
+    "captureState": "e5ffe22da6ff3de5332174b5c84bd15aa6c09a097513b38cea3e73adacf45395",
+    "restoreState": "2daaddaf9800c5e8c2be87928123d4ff62536abff11ec57bb0f04a29e756fc2f",
+    "createSnapshot": "7cfa7e33582b2a41584c9f457d4c25c095b1419d104dddca4dcd3c217b369bb4",
+    "encryptBackupState": "351bd2a0db070ba2a4f9d1d24ba24caa426829d40bc940de03ea5ab77f1b84db",
+    "decryptBackupEnvelope": "dd949e7c50ac98bf8ed850edb08e8e58ce5bf7edb18de4d4c63492264205ab6c",
+    "moveBundleToTrash": "03429a05bdf92e910ed86957a6b233588c3f1ca4a204da7377a5f66dc2f4da65",
+    "restoreTrashItem": "dab76722bbbd8dc0f8199d4e6be72718efc34e4b6b21e30237725edc86dea91c",
+    "nodeBounds": "27624e0195e1c85f18ff756db9bac1bad8a21c251672773c45034fe005f18616",
+    "edgeGeometry": "c2b7eaa307c88078d3fa4afcd3170e8bdf0da6af0fb04db9c2fae2a58b346a45",
+    "applyWorldTransform": "a5d984cfa4aab3db2582bc2a41dfb6d92d1577b381005bd20c45d93693f83241",
+    "physics": "29da4d1b061b40f6d0db2c50c90a42a2e3a5e7b746d0c2e06bcdb2453bcaaa58",
+    "validateBundleSize": "30fe69436e9abae50d3c67f25b380d4bb8f8de0d20c6a6713446ea4461f8016f",
+    "parseImportText": "7c1047ecfb426765175269e3127f46d0eb9e5b5f4b467cf9a588fcd72029ef75"
+  }
+}

@@ -1,4 +1,4 @@
-const CACHE = 'constellation-2.0.0-v1';
+const CACHE = 'constellation-2.1.0-rc1-observatory';
 const CORE = [
   './',
   './index.html',
