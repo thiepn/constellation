@@ -25,7 +25,7 @@ Node 22+; the suite owns its localhost server and disposable browser contexts. `
 - Quick capture, undo/redo, keyboard multi-selection, shortest-path presentation, command execution during the debounce window, F6 focus navigation and Escape dismissal.
 - All primary tool panels and their tabs; inspector sections; twelve alternative/research/study views; presentation; high contrast and large controls.
 - Actual backup download, malformed-import rejection, text import, delete/trash restore, and exact node/edge backup round trip through the import preview UI.
-- Actual controlling service worker, offline navigation and persistent IndexedDB contents. This is not a mocked offline response.
+- Actual controlling service worker, offline navigation and persistent IndexedDB contents. Chromium/Firefox use browser offline emulation. WebKit uses a stopped origin server with verified connection refusal because its emulator reported an internal reload error. Neither method mocks the offline response.
 - Graph loads of 100, 500, 1,000, 2,000, 5,000 and 10,000 nodes using frozen physics and battery mode. Fit and visible-node counts are recorded; the existing minimum zoom means the largest fixtures are partly culled.
 
 ## Source contracts
@@ -43,7 +43,7 @@ Seven axe WCAG A/AA samples: empty desktop, inspector, planner, Knowledge, Safet
 This is a **release candidate**. Do not merge it solely on the basis of the automated Chromium result.
 
 - Physical iOS/Android software keyboards, safe areas, touch gestures and installed standalone PWA acceptance still require device testing. Viewport automation is not a physical-device test.
-- Firefox/WebKit and screen-reader acceptance have not been run in this environment.
+- Chromium and Firefox completed the full CI suite. WebKit completed UI, migration and backup checks, but its automation offline switch reported an internal navigation error. The suite now tests WebKit recovery by stopping the origin server and verifying connection refusal; consult the latest CI result for that check. Physical Safari and screen-reader acceptance remain outstanding.
 - Configured sync, remote AI, publishing, collaboration, plugins, hardware VR and external service flows were not activated. Their controls were reviewed; source contracts cover only the named functions.
 - Quota exhaustion, encrypted backup round trips and every malformed legacy shape were not newly certified; the associated unchanged logic is protected where listed.
 - Large-graph timing is a synthetic, headless software-rendering observation, not a device performance guarantee or a comparison against the inherited 2.0 benchmark.

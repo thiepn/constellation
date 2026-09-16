@@ -22,4 +22,4 @@ Graph marks and links are quieter, with screen-size labels and collision thinnin
 
 IndexedDB stays at version 2 with no new migration. User theme identifiers, customization, graph types, import/export formats, encrypted backup logic and optional integrations remain supported. The PWA cache is versioned for the new shell; database contents remain separate from cache updates.
 
-No runtime packages are added. Development-only Playwright and axe provide repeatable release evidence. See `QA.md` for exact tested coverage and acceptance limitations. This candidate is not a claim of physical-device, screen-reader, WebKit/Firefox or configured external-integration certification.
+No runtime packages are added. Development-only Playwright and axe provide repeatable release evidence. See `QA.md` for exact tested coverage and acceptance limitations. This candidate is not a claim of physical-device, screen-reader or configured external-integration certification. Automated Chromium, Firefox and WebKit acceptance runs in CI; see the PR for the latest results and the WebKit offline-test method.
